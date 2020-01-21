@@ -1,4 +1,4 @@
-package com.sliu.demo.loopandrecursion;
+package com.sliu.offer.loopandrecursion;
 
 /**
  *

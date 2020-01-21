@@ -1,4 +1,4 @@
-package com.sliu.demo.linkedlist;
+package com.sliu.offer.linkedlist;
 
 /**
  *
