@@ -1,4 +1,4 @@
-package com.sliu.offer.offer;
+package com.sliu.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
