@@ -8,10 +8,32 @@ package com.sliu.offer.loopandrecursion;
 public class Fibonacci {
     // F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n>=3，n∈N*
     public static Integer fibonacciRecursion(int n) {
+        if (n < 1) {
+            return 0;
+        }
         if (n == 1 || n == 2) {
             return 1;
         }
         return fibonacciRecursion(n - 2) + fibonacciRecursion(n - 1);
+    }
+
+    // 循环
+    public static int fibonacciFor(int n) {
+        if (n < 1) {
+            return 0;
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        int pre = 1;
+        int prePre = 1;
+        int result = 0;
+        for (int i = 3; i <= n; i++) {
+            result = pre + prePre;
+            prePre = pre;
+            pre = result;
+        }
+        return result;
     }
 
 
@@ -20,6 +42,8 @@ public class Fibonacci {
     public static void main(String[] args) {
         Integer integer = fibonacciRecursion(6);
         System.out.println(integer);
+        int i = fibonacciFor(6);
+        System.out.println(i);
     }
 
 }
