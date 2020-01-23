@@ -40,9 +40,34 @@ public class FindIn {
      * 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。
      * NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
      */
+    // 二分
     public static int minNumberInRotateArray(int[] array) {
         if (array == null || array.length < 1) {
             return 0;
+        }
+        int low = 0;
+        int high = array.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (array[mid] > array[high]) {
+                low = mid + 1;
+            } else if (array[mid] == array[high]) {
+                high = high - 1;
+            } else {
+                high = mid;
+            }
+        }
+        return array[low];
+    }
+
+    public static int minNumberInRotateArray2(int[] array) {
+        if (array == null || array.length < 1) {
+            return 0;
+        }
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                return array[i + 1];
+            }
         }
         return 0;
     }
