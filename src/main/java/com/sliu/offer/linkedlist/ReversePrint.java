@@ -21,10 +21,10 @@ public class ReversePrint {
             return arrayList;
         }
         Vector<Integer> vector = new Vector();
-        vector.add(listNode.value);
+        vector.add(listNode.val);
         while (listNode.next != null) {
             listNode = listNode.next;
-            vector.add(listNode.value);
+            vector.add(listNode.val);
         }
         for (Integer integer : vector) {
             arrayList.add(integer);
@@ -44,7 +44,7 @@ public class ReversePrint {
             return arrayList1;
         }
         reversePrintRecursion(listNode.next);
-        arrayList1.add(listNode.value);
+        arrayList1.add(listNode.val);
         return arrayList1;
 
     }
@@ -55,10 +55,10 @@ public class ReversePrint {
         ListNode node2 = new ListNode();
         ListNode node3 = new ListNode();
         ListNode node4 = new ListNode();
-        node1.value = 1;
-        node2.value = 2;
-        node3.value = 3;
-        node4.value = 4;
+        node1.val = 1;
+        node2.val = 2;
+        node3.val = 3;
+        node4.val = 4;
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;

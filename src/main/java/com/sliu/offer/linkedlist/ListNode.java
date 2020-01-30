@@ -7,5 +7,5 @@ package com.sliu.offer.linkedlist;
  **/
 public class ListNode {
     ListNode next;
-    Integer value;
+    Integer val;
 }
