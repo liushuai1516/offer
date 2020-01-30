@@ -5,6 +5,7 @@ package com.sliu.offer.binaryTreeNode;
  * 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
  * 例如：前序遍历序列｛ 1, 2, 4, 7, 3, 5, 6, 8｝和中序遍历序列｛4, 7, 2, 1, 5, 3, 8，6}，
  * 重建出下图所示的二叉树并输出它的头结点。
+ *
  * @author: sliu
  * @date: 2020/1/23 11:48
  **/
@@ -25,11 +26,10 @@ public class ReBuild {
         }
         int rootVal = pre[0];
         //数组长度仅为1的时候就要处理
-        if(pre.length == 1){
+        if (pre.length == 1) {
             return new TreeNode(rootVal);
         }
-
-
+        return null;
 
 
     }
