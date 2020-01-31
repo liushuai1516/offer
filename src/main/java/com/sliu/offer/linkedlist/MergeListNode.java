@@ -39,7 +39,7 @@ public class MergeListNode {
                 }
                 list1 = list1.next;
             } else {
-                if (head == null) {
+                if ( head == null) {
                     head = last = list2;
                 } else {
                     last.next = list2;
