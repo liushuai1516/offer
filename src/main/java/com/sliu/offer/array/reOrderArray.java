@@ -19,12 +19,22 @@ public class reOrderArray {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(1);
-        int[] array = {1, 2, 3, 4, 5, 6, 7};
-        reOrderArray1(array);
-        System.out.println(Arrays.toString(array));
+    static int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return n;
+    }
 
+    public static void main(String[] args) {
+//        System.out.println(1);
+//        int[] array = {1, 2, 3, 4, 5, 6, 7};
+//        reOrderArray1(array);
+//        System.out.println(Arrays.toString(array));
+        System.out.println(tableSizeFor(8));
     }
 
 }

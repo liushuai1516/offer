@@ -19,8 +19,9 @@ public class ReverseList {
             pre = head;
             head = next;
         }
+        Stack<Integer> stack = new Stack();
+        stack.empty();
         return pre;
-
     }
 
 }

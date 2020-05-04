@@ -6,7 +6,7 @@ package com.sliu.offer.binaryTreeNode;
  * @date: 2020/1/23 11:48
  **/
 public class TreeNode {
-    int value;
+    int value = 0;
     TreeNode left;
     TreeNode right;
 

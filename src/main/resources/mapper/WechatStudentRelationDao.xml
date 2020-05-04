@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="src/main/java/com/sliu/.dao.WechatStudentRelationDao">
+
+    <resultMap type="src/main/java/com/sliu/.entity.WechatStudentRelation" id="WechatStudentRelationMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+        <result property="currentUserId" column="current_user_id" jdbcType="INTEGER"/>
+        <result property="currentStudentId" column="current_student_id" jdbcType="INTEGER"/>
+        <result property="institutionId" column="institution_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WechatStudentRelationMap">
+        select
+          id, open_id, current_user_id, current_student_id, institution_id
+        from mall.wechat_student_relation
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WechatStudentRelationMap">
+        select
+          id, open_id, current_user_id, current_student_id, institution_id
+        from mall.wechat_student_relation
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WechatStudentRelationMap">
+        select
+          id, open_id, current_user_id, current_student_id, institution_id
+        from mall.wechat_student_relation
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="openId != null and openId != ''">
+                and open_id = #{openId}
+            </if>
+            <if test="currentUserId != null">
+                and current_user_id = #{currentUserId}
+            </if>
+            <if test="currentStudentId != null">
+                and current_student_id = #{currentStudentId}
+            </if>
+            <if test="institutionId != null">
+                and institution_id = #{institutionId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.wechat_student_relation(open_id, current_user_id, current_student_id, institution_id)
+        values (#{openId}, #{currentUserId}, #{currentStudentId}, #{institutionId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.wechat_student_relation
+        <set>
+            <if test="openId != null and openId != ''">
+                open_id = #{openId},
+            </if>
+            <if test="currentUserId != null">
+                current_user_id = #{currentUserId},
+            </if>
+            <if test="currentStudentId != null">
+                current_student_id = #{currentStudentId},
+            </if>
+            <if test="institutionId != null">
+                institution_id = #{institutionId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.wechat_student_relation where id = #{id}
+    </delete>
+
+</mapper>

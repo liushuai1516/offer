@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sliu.dao.WechatPassportRelationDao">
+
+    <resultMap type="com.sliu.entity.WechatPassportRelation" id="WechatPassportRelationMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+        <result property="loginName" column="login_name" jdbcType="VARCHAR"/>
+        <result property="gsId" column="gs_id" jdbcType="INTEGER"/>
+        <result property="binded" column="binded" jdbcType="OTHER"/>
+        <result property="refreshToken" column="refresh_token" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WechatPassportRelationMap">
+        select
+          id, open_id, login_name, gs_id, binded, refresh_token, create_time, update_time
+        from mall.wechat_passport_relation
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WechatPassportRelationMap">
+        select
+          id, open_id, login_name, gs_id, binded, refresh_token, create_time, update_time
+        from mall.wechat_passport_relation
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WechatPassportRelationMap">
+        select
+          id, open_id, login_name, gs_id, binded, refresh_token, create_time, update_time
+        from mall.wechat_passport_relation
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="openId != null and openId != ''">
+                and open_id = #{openId}
+            </if>
+            <if test="loginName != null and loginName != ''">
+                and login_name = #{loginName}
+            </if>
+            <if test="gsId != null">
+                and gs_id = #{gsId}
+            </if>
+            <if test="binded != null">
+                and binded = #{binded}
+            </if>
+            <if test="refreshToken != null and refreshToken != ''">
+                and refresh_token = #{refreshToken}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into mall.wechat_passport_relation(open_id, login_name, gs_id, binded, refresh_token, create_time, update_time)
+        values (#{openId}, #{loginName}, #{gsId}, #{binded}, #{refreshToken}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall.wechat_passport_relation
+        <set>
+            <if test="openId != null and openId != ''">
+                open_id = #{openId},
+            </if>
+            <if test="loginName != null and loginName != ''">
+                login_name = #{loginName},
+            </if>
+            <if test="gsId != null">
+                gs_id = #{gsId},
+            </if>
+            <if test="binded != null">
+                binded = #{binded},
+            </if>
+            <if test="refreshToken != null and refreshToken != ''">
+                refresh_token = #{refreshToken},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall.wechat_passport_relation where id = #{id}
+    </delete>
+
+</mapper>
